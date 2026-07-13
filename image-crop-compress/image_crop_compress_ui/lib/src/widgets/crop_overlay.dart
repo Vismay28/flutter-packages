@@ -5,11 +5,15 @@ class CropOverlay extends StatelessWidget {
   const CropOverlay({
     super.key,
     required this.cropRect,
+    required this.imageRect,
     this.overlayColor = const Color(0x99000000),
   });
 
   /// The absolute pixel rectangle representing the active crop area on screen.
   final Rect cropRect;
+  
+  /// The absolute pixel rectangle representing the bounds of the image.
+  final Rect imageRect;
 
   /// The color of the overlay mask.
   final Color overlayColor;
@@ -20,6 +24,7 @@ class CropOverlay extends StatelessWidget {
       child: CustomPaint(
         painter: _CropOverlayPainter(
           cropRect: cropRect,
+          imageRect: imageRect,
           overlayColor: overlayColor,
         ),
         size: Size.infinite,
@@ -29,8 +34,13 @@ class CropOverlay extends StatelessWidget {
 }
 
 class _CropOverlayPainter extends CustomPainter {
-  _CropOverlayPainter({required this.cropRect, required this.overlayColor});
+  _CropOverlayPainter({
+    required this.cropRect,
+    required this.imageRect,
+    required this.overlayColor,
+  });
   final Rect cropRect;
+  final Rect imageRect;
   final Color overlayColor;
 
   @override
@@ -39,8 +49,8 @@ class _CropOverlayPainter extends CustomPainter {
       ..color = overlayColor
       ..style = PaintingStyle.fill;
 
-    final backgroundPath = Path()
-      ..addRect(Rect.fromLTWH(0, 0, size.width, size.height));
+    // The overlay is only drawn within the image bounds.
+    final backgroundPath = Path()..addRect(imageRect);
     final cropPath = Path()..addRect(cropRect);
 
     // Combine paths to create a hole where the crop rect is
@@ -56,6 +66,7 @@ class _CropOverlayPainter extends CustomPainter {
   @override
   bool shouldRepaint(_CropOverlayPainter oldDelegate) {
     return oldDelegate.cropRect != cropRect ||
+        oldDelegate.imageRect != imageRect ||
         oldDelegate.overlayColor != overlayColor;
   }
 }

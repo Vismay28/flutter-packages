@@ -27,9 +27,13 @@ class ImageEditorTheme {
         backgroundColor: Colors.white,
         foregroundColor: Colors.black87,
         activeColor: Colors.blueAccent,
-        icons: ImageEditorIcons(),
+        ratioSelectedColor: Colors.blueAccent,
+        ratioUnselectedColor: const Color(0xFFEEEEEE),
+        ratioSelectedTextColor: Colors.white,
+        ratioUnselectedTextColor: Colors.black87,
+        icons: const ImageEditorIcons(),
       ),
-      crop: CropTheme(
+      crop: const CropTheme(
         overlayColor: Color(0x99FFFFFF), // Slightly transparent white overlay
         gridColor: Color(0xB3000000), // Semi-transparent black grid
         handleColor: Colors.black, // Dark handles for contrast
@@ -47,9 +51,13 @@ class ImageEditorTheme {
         backgroundColor: Color(0xFF121212),
         foregroundColor: Colors.white,
         activeColor: Colors.blueAccent,
-        icons: ImageEditorIcons(),
+        ratioSelectedColor: Colors.blueAccent,
+        ratioUnselectedColor: Color(0xFF2C2C2C),
+        ratioSelectedTextColor: Colors.white,
+        ratioUnselectedTextColor: Colors.white,
+        icons: const ImageEditorIcons(),
       ),
-      crop: CropTheme(
+      crop: const CropTheme(
         overlayColor: Color(0x99000000), // Standard dark overlay
         gridColor: Color(0xB3FFFFFF), // Semi-transparent white grid
         handleColor: Colors.white,

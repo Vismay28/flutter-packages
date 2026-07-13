@@ -4,7 +4,6 @@ description: >
   resize, convert, and more — with native performance, beautiful adaptive UI,
   and support for phones, tablets, foldables, and desktop.
 version: 0.0.1
-publish_to: none # Using path deps during dev — remove before publishing
 homepage: https://github.com/yourorg/image_crop_compress
 repository: https://github.com/yourorg/image_crop_compress
 issue_tracker: https://github.com/yourorg/image_crop_compress/issues
@@ -22,15 +21,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  image_crop_compress_core:
-    path: ../image_crop_compress_core
-  image_crop_compress_ui:
-    path: ../image_crop_compress_ui
+  image_crop_compress_core: ^0.0.1
+  image_crop_compress_ui: ^0.0.1
   # Platform implementations are endorsed (auto-included)
-  image_crop_compress_android:
-    path: ../image_crop_compress_android
-  image_crop_compress_ios:
-    path: ../image_crop_compress_ios
+  image_crop_compress_android: ^0.0.1
+  image_crop_compress_ios: ^0.0.1
 
 dev_dependencies:
   flutter_test:

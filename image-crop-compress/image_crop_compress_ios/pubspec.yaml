@@ -3,7 +3,7 @@ description: >
   iOS implementation of image_crop_compress. Provides native image
   processing using CoreImage, UIKit, and ImageIO frameworks.
 version: 0.0.1
-publish_to: none # Internal package — not published separately
+homepage: https://github.com/yourorg/image_crop_compress
 
 environment:
   sdk: ^3.12.2
@@ -12,8 +12,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  image_crop_compress_core:
-    path: ../image_crop_compress_core
+  image_crop_compress_core: ^0.0.1
 
 dev_dependencies:
   flutter_test:

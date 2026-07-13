@@ -4,7 +4,7 @@ description: >
   platform interface, and operation definitions. This is a pure Dart package
   with no Flutter widget dependencies.
 version: 0.0.1
-publish_to: none # Internal package — not published separately
+homepage: https://github.com/yourorg/image_crop_compress
 
 environment:
   sdk: ^3.12.2

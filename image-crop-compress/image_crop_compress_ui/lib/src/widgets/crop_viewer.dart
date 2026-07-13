@@ -579,6 +579,7 @@ class _CropViewerState extends State<CropViewer> with TickerProviderStateMixin {
                           children: [
                             CropOverlay(
                               cropRect: cropRect,
+                              imageRect: imageRect,
                               overlayColor: widget.theme.overlayColor,
                             ),
                             CropGrid(

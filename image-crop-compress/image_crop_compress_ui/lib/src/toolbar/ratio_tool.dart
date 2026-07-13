@@ -14,7 +14,6 @@ class RatioTool extends CropToolbarItem {
       CropRatio.free,
       CropRatio.square,
       CropRatio.story,
-      CropRatio.post,
       CropRatio.landscape,
     ],
   });
@@ -51,13 +50,19 @@ class RatioTool extends CropToolbarItem {
                       child: ChoiceChip(
                         label: Text(ratio.label),
                         selected: state.ratio == ratio,
-                        selectedColor: theme.activeColor,
+                        selectedColor: theme.ratioSelectedColor,
+                        backgroundColor: theme.ratioUnselectedColor,
+                        showCheckmark: false, // Optional: cleans up the UI based on screenshot
                         labelStyle: TextStyle(
                           color: state.ratio == ratio
-                              ? theme.backgroundColor
-                              : theme.foregroundColor,
+                              ? theme.ratioSelectedTextColor
+                              : theme.ratioUnselectedTextColor,
                         ),
-                        side: BorderSide(color: theme.activeColor),
+                        side: BorderSide(
+                          color: state.ratio == ratio
+                              ? theme.ratioSelectedColor
+                              : theme.ratioUnselectedColor,
+                        ),
                         onSelected: (_) {
                           controller.setRatio(ratio);
                           Navigator.of(context).pop();
