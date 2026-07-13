@@ -1,0 +1,21 @@
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  rules:
+    prefer_single_quotes: true
+    always_use_package_imports: true
+    sort_constructors_first: true
+    sort_unnamed_constructors_first: true
+    prefer_final_locals: true
+    prefer_const_constructors: true
+    prefer_const_declarations: true
+    avoid_print: true
+    public_member_api_docs: true
+
+
+analyzer:
+  errors:
+    public_member_api_docs: warning
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
