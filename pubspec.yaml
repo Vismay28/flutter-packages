@@ -1,0 +1,8 @@
+name: image_crop_compress_workspace
+description: A workspace for the image_crop_compress packages.
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dev_dependencies:
+  melos: ^5.0.0

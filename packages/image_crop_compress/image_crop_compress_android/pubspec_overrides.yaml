@@ -1,0 +1,4 @@
+# melos_managed_dependency_overrides: image_crop_compress_core
+dependency_overrides:
+  image_crop_compress_core:
+    path: ../image_crop_compress_core

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/packages/image_crop_compress/image_crop_compress/melos_image_crop_compress.iml" filepath="$PROJECT_DIR$/packages/image_crop_compress/image_crop_compress/melos_image_crop_compress.iml" />
+      <module fileurl="file://$PROJECT_DIR$/packages/image_crop_compress/image_crop_compress_android/melos_image_crop_compress_android.iml" filepath="$PROJECT_DIR$/packages/image_crop_compress/image_crop_compress_android/melos_image_crop_compress_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/packages/image_crop_compress/image_crop_compress_core/melos_image_crop_compress_core.iml" filepath="$PROJECT_DIR$/packages/image_crop_compress/image_crop_compress_core/melos_image_crop_compress_core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/packages/image_crop_compress/example/melos_image_crop_compress_example.iml" filepath="$PROJECT_DIR$/packages/image_crop_compress/example/melos_image_crop_compress_example.iml" />
+      <module fileurl="file://$PROJECT_DIR$/packages/image_crop_compress/image_crop_compress_ios/melos_image_crop_compress_ios.iml" filepath="$PROJECT_DIR$/packages/image_crop_compress/image_crop_compress_ios/melos_image_crop_compress_ios.iml" />
+      <module fileurl="file://$PROJECT_DIR$/packages/image_crop_compress/image_crop_compress_ui/melos_image_crop_compress_ui.iml" filepath="$PROJECT_DIR$/packages/image_crop_compress/image_crop_compress_ui/melos_image_crop_compress_ui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/melos_flutter_packages_workspace.iml" filepath="$PROJECT_DIR$/melos_flutter_packages_workspace.iml" />
+    </modules>
+  </component>
+</project>
