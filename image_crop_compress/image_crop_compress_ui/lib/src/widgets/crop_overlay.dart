@@ -29,10 +29,7 @@ class CropOverlay extends StatelessWidget {
 }
 
 class _CropOverlayPainter extends CustomPainter {
-  _CropOverlayPainter({
-    required this.cropRect,
-    required this.overlayColor,
-  });
+  _CropOverlayPainter({required this.cropRect, required this.overlayColor});
   final Rect cropRect;
   final Color overlayColor;
 
@@ -47,8 +44,11 @@ class _CropOverlayPainter extends CustomPainter {
     final cropPath = Path()..addRect(cropRect);
 
     // Combine paths to create a hole where the crop rect is
-    final maskPath =
-        Path.combine(PathOperation.difference, backgroundPath, cropPath);
+    final maskPath = Path.combine(
+      PathOperation.difference,
+      backgroundPath,
+      cropPath,
+    );
 
     canvas.drawPath(maskPath, paint);
   }

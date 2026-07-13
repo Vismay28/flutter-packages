@@ -37,7 +37,7 @@ class DefaultImageEditorLayoutDelegate extends ImageEditorLayoutDelegate {
       case ImageEditorLayout.tablet:
       case ImageEditorLayout.desktop:
       case ImageEditorLayout
-            .foldable: // Assuming opened foldable behaves like tablet
+          .foldable: // Assuming opened foldable behaves like tablet
         return const EdgeInsets.symmetric(horizontal: 24.0, vertical: 24.0);
     }
   }
@@ -81,7 +81,8 @@ class DefaultImageEditorLayoutDelegate extends ImageEditorLayoutDelegate {
     switch (layout) {
       case ImageEditorLayout.mobile:
         return const EdgeInsets.only(
-            bottom: 100); // Leave space for bottom toolbar
+          bottom: 100,
+        ); // Leave space for bottom toolbar
       case ImageEditorLayout.tablet:
       case ImageEditorLayout.desktop:
       case ImageEditorLayout.foldable:

@@ -15,19 +15,19 @@ class ImageEditor extends StatefulWidget {
     required this.image,
     required this.onComplete,
     required this.onCancel,
-    this.theme = const ImageEditorTheme(),
+    this.theme,
     this.layoutDelegate = const DefaultImageEditorLayoutDelegate(),
     this.enableCompression = false,
     this.maxSizeKB = 512,
     this.compressionQuality,
-  })  : assert(maxSizeKB > 0),
-        assert(
-          compressionQuality == null ||
-              (compressionQuality >= 1 && compressionQuality <= 100),
-        );
+  }) : assert(maxSizeKB > 0),
+       assert(
+         compressionQuality == null ||
+             (compressionQuality >= 1 && compressionQuality <= 100),
+       );
 
   final File image;
-  final ImageEditorTheme theme;
+  final ImageEditorTheme? theme;
   final ValueChanged<ProcessedImage> onComplete;
   final VoidCallback onCancel;
   final ImageEditorLayoutDelegate layoutDelegate;
@@ -70,9 +70,10 @@ class _ImageEditorState extends State<ImageEditor> {
   Future<void> _processImage() async {
     try {
       showDialog(
-          context: context,
-          barrierDismissible: false,
-          builder: (c) => const Center(child: CircularProgressIndicator()));
+        context: context,
+        barrierDismissible: false,
+        builder: (c) => const Center(child: CircularProgressIndicator()),
+      );
 
       final result = _controller.toCropResult();
       final processor = ImageProcessor(widget.image);
@@ -83,8 +84,9 @@ class _ImageEditorState extends State<ImageEditor> {
         rotation: result.rotation,
         flipX: result.flippedX,
         flipY: result.flippedY,
-        outputQuality:
-            widget.enableCompression ? null : widget.compressionQuality,
+        outputQuality: widget.enableCompression
+            ? null
+            : widget.compressionQuality,
       );
 
       if (widget.enableCompression) {
@@ -101,14 +103,20 @@ class _ImageEditorState extends State<ImageEditor> {
     } catch (e) {
       if (!mounted) return;
       Navigator.pop(context); // close dialog
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error saving image: $e')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Error saving image: $e')));
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final activeTheme =
+        widget.theme ??
+        (Theme.of(context).brightness == Brightness.light
+            ? ImageEditorTheme.light()
+            : ImageEditorTheme.dark());
+
     final layout = ImageEditorLayout.resolve(context);
 
     final toolbarPadding = widget.layoutDelegate.toolbarPadding(layout);
@@ -117,23 +125,29 @@ class _ImageEditorState extends State<ImageEditor> {
     final editorPadding = widget.layoutDelegate.editorPadding(layout);
 
     return Scaffold(
-      backgroundColor: widget.theme.scaffoldBackgroundColor,
+      backgroundColor: activeTheme.scaffoldBackgroundColor,
       appBar: AppBar(
-        backgroundColor: widget.theme.scaffoldBackgroundColor,
-        foregroundColor: widget.theme.textStyle.color,
+        backgroundColor: activeTheme.appBarBackgroundColor,
+        foregroundColor: activeTheme.textStyle.color,
         elevation: 0,
-        leading: TextButton(
-          onPressed: widget.onCancel,
-          child: Text('Cancel', style: widget.theme.textStyle),
-        ),
+        leading:
+            activeTheme.cancelButton ??
+            TextButton(
+              onPressed: widget.onCancel,
+              child: Text('Cancel', style: activeTheme.textStyle),
+            ),
         leadingWidth: 80,
         actions: [
-          TextButton(
-            onPressed: _processImage,
-            child: Text('Done',
-                style: widget.theme.textStyle
-                    .copyWith(fontWeight: FontWeight.bold)),
-          ),
+          activeTheme.doneButton ??
+              TextButton(
+                onPressed: _processImage,
+                child: Text(
+                  'Done',
+                  style: activeTheme.textStyle.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
         ],
       ),
       body: Stack(
@@ -146,7 +160,7 @@ class _ImageEditorState extends State<ImageEditor> {
             child: CropViewer(
               image: widget.image,
               controller: _controller,
-              theme: widget.theme.crop,
+              theme: activeTheme.crop,
             ),
           ),
 
@@ -164,7 +178,7 @@ class _ImageEditorState extends State<ImageEditor> {
                 child: CropToolbar(
                   key: ValueKey(toolbarAxis),
                   controller: _controller,
-                  theme: widget.theme.toolbar,
+                  theme: activeTheme.toolbar,
                   axis: toolbarAxis,
                   buttonSpacing: widget.layoutDelegate.buttonSpacing(layout),
                 ),

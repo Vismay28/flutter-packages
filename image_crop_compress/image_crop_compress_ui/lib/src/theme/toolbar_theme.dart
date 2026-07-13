@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:image_crop_compress_ui/src/theme/image_editor_icons.dart';
 
 /// Theme configuration specifically for the toolbar in the ImageEditor.
 class ToolbarTheme {
@@ -7,6 +8,7 @@ class ToolbarTheme {
     this.foregroundColor = Colors.white,
     this.activeColor = Colors.blue,
     this.height = 80.0,
+    this.icons = const ImageEditorIcons(),
   });
 
   /// The background color of the toolbar.
@@ -21,17 +23,22 @@ class ToolbarTheme {
   /// Height of the toolbar.
   final double height;
 
+  /// The icons used in the toolbar tools.
+  final ImageEditorIcons icons;
+
   ToolbarTheme copyWith({
     Color? backgroundColor,
     Color? foregroundColor,
     Color? activeColor,
     double? height,
+    ImageEditorIcons? icons,
   }) {
     return ToolbarTheme(
       backgroundColor: backgroundColor ?? this.backgroundColor,
       foregroundColor: foregroundColor ?? this.foregroundColor,
       activeColor: activeColor ?? this.activeColor,
       height: height ?? this.height,
+      icons: icons ?? this.icons,
     );
   }
 }

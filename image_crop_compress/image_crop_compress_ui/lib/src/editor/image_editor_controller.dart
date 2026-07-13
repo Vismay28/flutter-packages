@@ -44,7 +44,7 @@ class ImageEditorState {
 class ImageEditorController extends ValueNotifier<ImageEditorState> {
   /// Creates a controller with optional initial editor state.
   ImageEditorController({ImageEditorState? initialState})
-      : super(initialState ?? const ImageEditorState());
+    : super(initialState ?? const ImageEditorState());
 
   // Crop rectangles are stored normalized to the image. Their normalized
   // aspect ratio must therefore account for the displayed image dimensions.
@@ -59,7 +59,8 @@ class ImageEditorController extends ValueNotifier<ImageEditorState> {
     _imageAspectRatio = imageAspectRatio;
     if (value.ratio.aspectRatio != null) {
       value = value.copyWith(
-          cropRect: _cropRectForRatio(value.cropRect, value.ratio));
+        cropRect: _cropRectForRatio(value.cropRect, value.ratio),
+      );
     }
   }
 
@@ -92,25 +93,23 @@ class ImageEditorController extends ValueNotifier<ImageEditorState> {
       width: width,
       height: height,
     );
-    final dx =
-        rect.left < 0 ? -rect.left : (rect.right > 1 ? 1 - rect.right : 0.0);
-    final dy =
-        rect.top < 0 ? -rect.top : (rect.bottom > 1 ? 1 - rect.bottom : 0.0);
+    final dx = rect.left < 0
+        ? -rect.left
+        : (rect.right > 1 ? 1 - rect.right : 0.0);
+    final dy = rect.top < 0
+        ? -rect.top
+        : (rect.bottom > 1 ? 1 - rect.bottom : 0.0);
     return rect.shift(Offset(dx, dy));
   }
 
   /// Rotates the image 90 degrees clockwise.
   void rotateRight() {
-    value = value.copyWith(
-      rotationDegrees: (value.rotationDegrees + 90) % 360,
-    );
+    value = value.copyWith(rotationDegrees: (value.rotationDegrees + 90) % 360);
   }
 
   /// Rotates the image 90 degrees counter-clockwise.
   void rotateLeft() {
-    value = value.copyWith(
-      rotationDegrees: (value.rotationDegrees - 90) % 360,
-    );
+    value = value.copyWith(rotationDegrees: (value.rotationDegrees - 90) % 360);
   }
 
   /// Flips the image horizontally.
@@ -162,9 +161,11 @@ class ImageEditorController extends ValueNotifier<ImageEditorState> {
     return CropResult(
       cropRect: value.cropRect,
       rotation: value.rotationDegrees,
-      flippedX: value.flipDirection == FlipDirection.horizontal ||
+      flippedX:
+          value.flipDirection == FlipDirection.horizontal ||
           value.flipDirection == FlipDirection.both,
-      flippedY: value.flipDirection == FlipDirection.vertical ||
+      flippedY:
+          value.flipDirection == FlipDirection.vertical ||
           value.flipDirection == FlipDirection.both,
       ratio: value.ratio,
     );

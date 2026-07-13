@@ -57,10 +57,14 @@ class _CropHandlesPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     // Dynamic sizing based on cropRect shortest side
     final shortestSide = min(cropRect.width, cropRect.height);
-    final handleSize =
-        max(shortestSide * handleSizeFactor, 16.0); // minimum 16px length
-    final handleThickness =
-        max(shortestSide * handleThicknessFactor, 2.0); // minimum 2px thickness
+    final handleSize = max(
+      shortestSide * handleSizeFactor,
+      16.0,
+    ); // minimum 16px length
+    final handleThickness = max(
+      shortestSide * handleThicknessFactor,
+      2.0,
+    ); // minimum 2px thickness
 
     final paint = Paint()
       ..color = handleColor
@@ -74,8 +78,10 @@ class _CropHandlesPainter extends CustomPainter {
     final tl = cropRect.topLeft;
     final tlPath = Path()
       ..moveTo(tl.dx + length, tl.dy)
-      ..lineTo(tl.dx - halfStroke,
-          tl.dy) // extending slightly so corners join nicely
+      ..lineTo(
+        tl.dx - halfStroke,
+        tl.dy,
+      ) // extending slightly so corners join nicely
       ..lineTo(tl.dx - halfStroke, tl.dy + length);
     canvas.drawPath(tlPath, paint);
 

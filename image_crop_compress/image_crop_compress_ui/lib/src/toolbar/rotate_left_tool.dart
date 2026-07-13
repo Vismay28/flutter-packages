@@ -13,7 +13,7 @@ class RotateLeftTool extends CropToolbarItem {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      icon: Icon(Icons.rotate_left, color: theme.foregroundColor),
+      icon: Icon(theme.icons.rotateLeft, color: theme.foregroundColor),
       onPressed: controller.rotateLeft,
       tooltip: 'Rotate counter-clockwise',
     );

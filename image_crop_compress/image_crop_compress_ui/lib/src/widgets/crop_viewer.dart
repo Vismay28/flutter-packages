@@ -70,8 +70,10 @@ class _CropViewerState extends State<CropViewer> with TickerProviderStateMixin {
       vsync: this,
       duration: const Duration(milliseconds: 200),
     );
-    _gridOpacity =
-        Tween<double>(begin: 0.0, end: 1.0).animate(_gridAnimationController);
+    _gridOpacity = Tween<double>(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(_gridAnimationController);
 
     _viewportAnimationController = AnimationController(
       vsync: this,
@@ -207,8 +209,11 @@ class _CropViewerState extends State<CropViewer> with TickerProviderStateMixin {
     _startViewportTransform = _viewportTransform.clone();
 
     final currentScale = _viewportTransform.getMaxScaleOnAxis();
-    _activeHandle =
-        _getHitHandle(touchInImageSpace, absoluteCropRect, currentScale);
+    _activeHandle = _getHitHandle(
+      touchInImageSpace,
+      absoluteCropRect,
+      currentScale,
+    );
 
     _gridAnimationController.forward();
   }
@@ -227,7 +232,9 @@ class _CropViewerState extends State<CropViewer> with TickerProviderStateMixin {
 
       // Translate
       updatedTransform.translate(
-          details.focalPointDelta.dx, details.focalPointDelta.dy);
+        details.focalPointDelta.dx,
+        details.focalPointDelta.dy,
+      );
 
       // Scale around the focal point
       final focalPoint = stackBox.globalToLocal(details.focalPoint);
@@ -249,8 +256,10 @@ class _CropViewerState extends State<CropViewer> with TickerProviderStateMixin {
     final Matrix4 inverseTransform =
         Matrix4.tryInvert(_viewportTransform) ?? Matrix4.identity();
     final localTouch = stackBox.globalToLocal(details.focalPoint);
-    final touchInImageSpace =
-        MatrixUtils.transformPoint(inverseTransform, localTouch);
+    final touchInImageSpace = MatrixUtils.transformPoint(
+      inverseTransform,
+      localTouch,
+    );
     final delta = touchInImageSpace - _startTouchPosition!;
 
     Rect newRect = _startCropRect!;
@@ -302,25 +311,32 @@ class _CropViewerState extends State<CropViewer> with TickerProviderStateMixin {
 
         if (_activeHandle == _DragHandle.topLeft) {
           newRect = Rect.fromLTRB(
-              _startCropRect!.right - w,
-              _startCropRect!.bottom - h,
-              _startCropRect!.right,
-              _startCropRect!.bottom);
+            _startCropRect!.right - w,
+            _startCropRect!.bottom - h,
+            _startCropRect!.right,
+            _startCropRect!.bottom,
+          );
         } else if (_activeHandle == _DragHandle.topRight) {
           newRect = Rect.fromLTRB(
-              _startCropRect!.left,
-              _startCropRect!.bottom - h,
-              _startCropRect!.left + w,
-              _startCropRect!.bottom);
+            _startCropRect!.left,
+            _startCropRect!.bottom - h,
+            _startCropRect!.left + w,
+            _startCropRect!.bottom,
+          );
         } else if (_activeHandle == _DragHandle.bottomLeft) {
           newRect = Rect.fromLTRB(
-              _startCropRect!.right - w,
-              _startCropRect!.top,
-              _startCropRect!.right,
-              _startCropRect!.top + h);
+            _startCropRect!.right - w,
+            _startCropRect!.top,
+            _startCropRect!.right,
+            _startCropRect!.top + h,
+          );
         } else if (_activeHandle == _DragHandle.bottomRight) {
-          newRect = Rect.fromLTRB(_startCropRect!.left, _startCropRect!.top,
-              _startCropRect!.left + w, _startCropRect!.top + h);
+          newRect = Rect.fromLTRB(
+            _startCropRect!.left,
+            _startCropRect!.top,
+            _startCropRect!.left + w,
+            _startCropRect!.top + h,
+          );
         }
 
         newRect = _constrainLockedCornerToImage(
@@ -391,7 +407,11 @@ class _CropViewerState extends State<CropViewer> with TickerProviderStateMixin {
     switch (handle) {
       case _DragHandle.topLeft:
         return Rect.fromLTWH(
-            rect.right - width, rect.bottom - height, width, height);
+          rect.right - width,
+          rect.bottom - height,
+          width,
+          height,
+        );
       case _DragHandle.topRight:
         return Rect.fromLTWH(rect.left, rect.bottom - height, width, height);
       case _DragHandle.bottomLeft:
@@ -466,13 +486,13 @@ class _CropViewerState extends State<CropViewer> with TickerProviderStateMixin {
           _viewportTransform = idealMatrix;
         });
       } else {
-        _viewportAnimation = Matrix4Tween(
-          begin: _viewportTransform,
-          end: idealMatrix,
-        ).animate(CurvedAnimation(
-          parent: _viewportAnimationController,
-          curve: Curves.easeOutCubic,
-        ));
+        _viewportAnimation =
+            Matrix4Tween(begin: _viewportTransform, end: idealMatrix).animate(
+              CurvedAnimation(
+                parent: _viewportAnimationController,
+                curve: Curves.easeOutCubic,
+              ),
+            );
         _viewportAnimationController.forward(from: 0);
       }
     });
@@ -547,10 +567,7 @@ class _CropViewerState extends State<CropViewer> with TickerProviderStateMixin {
                                   ? -1.0
                                   : 1.0,
                             ),
-                          child: Image.file(
-                            widget.image,
-                            fit: BoxFit.fill,
-                          ),
+                          child: Image.file(widget.image, fit: BoxFit.fill),
                         ),
                       ),
                     ),
@@ -561,8 +578,9 @@ class _CropViewerState extends State<CropViewer> with TickerProviderStateMixin {
                           fit: StackFit.expand,
                           children: [
                             CropOverlay(
-                                cropRect: cropRect,
-                                overlayColor: widget.theme.overlayColor),
+                              cropRect: cropRect,
+                              overlayColor: widget.theme.overlayColor,
+                            ),
                             CropGrid(
                               cropRect: cropRect,
                               gridColor: widget.theme.gridColor,

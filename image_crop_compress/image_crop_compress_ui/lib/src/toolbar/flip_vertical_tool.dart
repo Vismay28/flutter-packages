@@ -17,7 +17,7 @@ class FlipVerticalTool extends CropToolbarItem {
     return IconButton(
       icon: Transform.rotate(
         angle: math.pi / 2,
-        child: Icon(Icons.flip, color: theme.foregroundColor),
+        child: Icon(theme.icons.flipVertical, color: theme.foregroundColor),
       ),
       onPressed: controller.flipVertical,
       tooltip: 'Flip vertically',

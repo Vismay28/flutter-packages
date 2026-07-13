@@ -25,7 +25,7 @@ class RatioTool extends CropToolbarItem {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      icon: Icon(Icons.aspect_ratio, color: theme.foregroundColor),
+      icon: Icon(theme.icons.aspectRatio, color: theme.foregroundColor),
       tooltip: 'Aspect ratio',
       onPressed: () => _showPicker(context),
     );
