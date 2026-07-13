@@ -1,12 +1,11 @@
 name: image_crop_compress
 description: >
-  A modern, responsive image editing toolkit for Flutter. Crop, compress,
-  resize, convert, and more — with native performance, beautiful adaptive UI,
-  and support for phones, tablets, foldables, and desktop.
-version: 0.0.1
-homepage: https://github.com/yourorg/image_crop_compress
-repository: https://github.com/yourorg/image_crop_compress
-issue_tracker: https://github.com/yourorg/image_crop_compress/issues
+  A high-performance Flutter image toolkit. Crop, compress, resize, and convert
+  with native APIs and a beautiful adaptive UI.
+version: 0.0.2
+homepage: https://github.com/Vismay28/flutter-packages/tree/main/image-crop-compress
+repository: https://github.com/Vismay28/flutter-packages/tree/main/image-crop-compress
+issue_tracker: https://github.com/Vismay28/flutter-packages/issues
 topics:
   - image
   - crop
@@ -21,11 +20,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  image_crop_compress_core: ^0.0.1
-  image_crop_compress_ui: ^0.0.1
+  image_crop_compress_core: ^0.0.2
+  image_crop_compress_ui: ^0.0.2
   # Platform implementations are endorsed (auto-included)
-  image_crop_compress_android: ^0.0.1
-  image_crop_compress_ios: ^0.0.1
+  image_crop_compress_android: ^0.0.2
+  image_crop_compress_ios: ^0.0.2
 
 dev_dependencies:
   flutter_test:
