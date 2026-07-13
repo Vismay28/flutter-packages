@@ -35,8 +35,8 @@ By offloading the actual pixel manipulation to the underlying iOS (Swift) and An
 ## 🛠 Installation
 
 ### 1. Requirements
-* **iOS**: iOS 11.0 or higher
-* **Android**: API Level 21 (Android 5.0) or higher
+* **iOS**: iOS 13.0 or higher *(technically supports down to iOS 11.0 for legacy apps)*
+* **Android**: Android 10 (API 29) or higher *(technically supports down to Android 5.0 API 21 for legacy apps)*
 
 *(No special AndroidManifest.xml or Info.plist permissions are required by this package directly unless you are picking files from the gallery/camera, which you should handle using a separate package like `image_picker`).*
 
