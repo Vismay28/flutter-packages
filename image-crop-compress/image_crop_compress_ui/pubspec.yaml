@@ -3,7 +3,7 @@ description: >
   Responsive image editor UI for image_crop_compress. Contains the
   adaptive editor shell, layout delegates, widgets, toolbar, and theming
   system. Designed for phones, tablets, foldables, and desktop.
-version: 0.0.2
+version: 0.0.3
 homepage: https://github.com/Vismay28/flutter-packages/tree/main/image-crop-compress
 repository: https://github.com/Vismay28/flutter-packages/tree/main/image-crop-compress
 issue_tracker: https://github.com/Vismay28/flutter-packages/issues
@@ -15,7 +15,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  image_crop_compress_core: ^0.0.2
+  image_crop_compress_core: ^0.0.3
 
 dev_dependencies:
   flutter_test:
