@@ -1,19 +1,26 @@
+import 'package:flutter/services.dart';
 import 'package:image_crop_compress_core/src/core/processed_image.dart';
 import 'package:image_crop_compress_core/src/operations/base_operation.dart';
 
 /// Exception thrown when an image processing operation fails.
 class ImageProcessorException implements Exception {
+  ImageProcessorException(
+    this.message, {
+    this.operationName,
+    this.code,
+    this.details,
+  });
 
-  ImageProcessorException(this.message, {this.operationName});
   final String message;
   final String? operationName;
+  final String? code;
+  final dynamic details;
 
   @override
   String toString() {
-    if (operationName != null) {
-      return 'ImageProcessorException (Operation: $operationName): $message';
-    }
-    return 'ImageProcessorException: $message';
+    final op = operationName != null ? ' (Operation: $operationName)' : '';
+    final codeStr = code != null ? ' [$code]' : '';
+    return 'ImageProcessorException$op$codeStr: $message';
   }
 }
 
@@ -49,6 +56,13 @@ class Pipeline {
     for (final operation in _operations) {
       try {
         currentImage = await operation.execute(currentImage);
+      } on PlatformException catch (e) {
+        throw ImageProcessorException(
+          e.message ?? 'Unknown platform error',
+          operationName: operation.operationName,
+          code: e.code,
+          details: e.details,
+        );
       } catch (e) {
         throw ImageProcessorException(
           'Failed to execute ${operation.operationName}: $e',
