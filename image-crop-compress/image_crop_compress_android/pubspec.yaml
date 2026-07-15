@@ -2,7 +2,7 @@ name: image_crop_compress_android
 description: >
   Android implementation of image_crop_compress. Provides native image
   processing using Android Bitmap, Canvas, and Matrix APIs.
-version: 0.0.3
+version: 0.0.4
 homepage: https://github.com/Vismay28/flutter-packages/tree/main/image-crop-compress
 repository: https://github.com/Vismay28/flutter-packages/tree/main/image-crop-compress
 issue_tracker: https://github.com/Vismay28/flutter-packages/issues
@@ -14,7 +14,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  image_crop_compress_core: ^0.0.3
+  image_crop_compress_core: ^0.0.4
 
 dev_dependencies:
   flutter_test:

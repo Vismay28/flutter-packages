@@ -144,7 +144,7 @@ result.mimeType;    // String
 
 ## 📝 Note
 
-`image_crop_compress` is under development and it's still possible that breaking changes may happen at any time. Any [feedbacks](https://github.com/yourorg/image_crop_compress/issues) and Pull Requests are welcome to make `image_crop_compress` more handy and useful with less bugs!
+`image_crop_compress` is under development and it's still possible that breaking changes may happen at any time. Any [feedbacks](https://github.com/Vismay28/flutter-packages/issues) and Pull Requests are welcome to make `image_crop_compress` more handy and useful with less bugs!
 
 ---
 
